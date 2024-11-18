@@ -1,5 +1,5 @@
 <?php
-	set_include_path("/opt/bitnami/projects/doceditor/html/php");
+	set_include_path("php");
 	require "auth.php";
 	require "functions.php";
 
@@ -8,7 +8,7 @@
 
 <html>
   <head>
-    <title>Pogo Pogo Articles</title>
+    <title>Document Editor</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -33,7 +33,7 @@
 			<a href="/">
 				<div class="p-2 flex flex-row flex-nowrap space-x-2 items-center">
 					<img class="h-10 w-10 rounded-md shadow-xl" src="/favicon.ico">
-					<p class="text-lg text-slate-900">Pogo Articles</p>
+					<p class="text-lg text-slate-900">Article Editor</p>
 				</div>
   		</a>
   	</nav>
@@ -46,3 +46,4 @@
 
   </body>
 </html>
+

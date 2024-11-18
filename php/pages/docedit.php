@@ -1,5 +1,5 @@
 <?php
-	set_include_path("/opt/bitnami/projects/doceditor/html/php");
+	set_include_path("..");
 	require("auth.php");
 
 	if(!$_SESSION["editauth"]) die("no...");

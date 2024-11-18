@@ -1,17 +1,29 @@
 <?php
 
+define("PASSWORD_FILE", "passwords.txt");
+
 session_start();
 
 $bIsDenied = false;
 $bHasSubmitted = isset($_POST["submit"]);
 
+$file = fopen(PASSWORD_FILE, "r");
+$password = trim(fgets($file)); // first line is regular access key
+$password_edit = trim(fgets($file)); // second line is the edit access key
+fclose($file);
+
+if($password_edit === false) {
+	$_SESSION["auth"] = 1;
+	$_SESSION["editauth"] = 1;
+}
+
 if($bHasSubmitted) {
-	if ($_POST["password"] == "3933824#hot") {
+	if ($_POST["password"] == $password_edit) {
 		$_SESSION["auth"] = 1;
 		$_SESSION["editauth"] = 1;
 		die("<meta http-equiv=\"Refresh\" content=\"0; url='https://docedit.shwitter.ca/'\"  />");
 	}
-	else if ($_POST["password"] == "3933824") {
+	else if ($_POST["password"] == $password) {
 		$_SESSION["auth"] = 1;
 		$_SESSION["editauth"] = 0;
 		echo "logged in";
@@ -52,6 +64,7 @@ if(isset($_POST["logout"])) {
 		<div class="py-16 px-auto text-center">
 			<h1 class="p-16 text-xl text-slate-900 dark:text-slate-100">Login</h1>
 
+			<?php echo $password . "," . $password_edit ?>
 
 			<?php if (isset($_SESSION["auth"])) : ?>
 			<p class="p-8 text-lg text-slate-200 dark:text-slate-200"">Currently Logged In.</p>
