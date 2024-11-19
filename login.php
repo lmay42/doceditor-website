@@ -1,3 +1,4 @@
+
 <?php
 
 define("PASSWORD_FILE", "passwords.txt");
@@ -63,8 +64,6 @@ if(isset($_POST["logout"])) {
 
 		<div class="py-16 px-auto text-center">
 			<h1 class="p-16 text-xl text-slate-900 dark:text-slate-100">Login</h1>
-
-			<?php echo $password . "," . $password_edit ?>
 
 			<?php if (isset($_SESSION["auth"])) : ?>
 			<p class="p-8 text-lg text-slate-200 dark:text-slate-200"">Currently Logged In.</p>
